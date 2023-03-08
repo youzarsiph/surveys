@@ -7,30 +7,33 @@ from users.views import UserCreateView, UserDetailView, UserListView, UserUpdate
 
 
 # Create your patterns here.
+app_name = 'users'
+
+
 urlpatterns = [
     path(
         '',
         UserListView.as_view(),
-        name='user_list'
+        name='list'
     ),
     path(
         'register/',
         UserCreateView.as_view(),
-        name='create_user'
+        name='create'
     ),
     path(
         '<int:id>/',
         UserDetailView.as_view(),
-        name='user_detail'
+        name='detail'
     ),
     path(
         '<int:id>/update/',
         UserUpdateView.as_view(),
-        name='update_user'
+        name='update'
     ),
     path(
         '<int:id>/delete/',
         UserDeleteView.as_view(),
-        name='delete_user'
+        name='delete'
     ),
 ]

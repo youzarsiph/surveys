@@ -17,6 +17,6 @@ class UserForm(forms.ModelForm):
 
         model = User
         exclude = [
-            'id', 'is_superuser', 'is_staff', 'is_active',
+            'id', 'password', 'is_superuser', 'is_staff', 'is_active',
             'groups', 'user_permissions', 'date_joined', 'last_login'
         ]
