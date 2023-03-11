@@ -7,7 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
 from users.permissions import IsOwner
-from users.serializers import UserSerializer, UserCreationSerializer
+from users.serializers import UserSerializer, UserCreationSerializer, UserUpdateSerializer
 
 
 # Create your viewsets here.
@@ -27,13 +27,16 @@ class UserViewSet(ModelViewSet):
         if self.action == 'create':
             self.permission_classes = []
 
-        return [permission() for permission in self.permission_classes]
+        return super().get_permissions()
 
     def get_serializer_class(self):
         """ Return serializer  """
 
         if self.action == 'create':
             self.serializer_class = UserCreationSerializer
+
+        if self.action in ('update', 'partial_update'):
+            self.serializer_class = UserUpdateSerializer
 
         return super().get_serializer_class()
 

@@ -29,3 +29,15 @@ class UserCreationSerializer(UserSerializer):
             'id', 'is_superuser', 'is_staff', 'is_active',
             'groups', 'user_permissions', 'date_joined', 'last_login'
         ]
+
+
+class UserUpdateSerializer(UserSerializer):
+    """ User Update Serializer """
+
+    class Meta(UserSerializer.Meta):
+        """ Meta data """
+
+        exclude = [
+            'id', 'password', 'is_superuser', 'is_staff', 'is_active',
+            'groups', 'user_permissions', 'date_joined', 'last_login'
+        ]
